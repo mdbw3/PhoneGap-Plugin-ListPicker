@@ -300,6 +300,25 @@
   return pickerView.frame.size.width - 30;
 }
 
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 50;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    //1. Create your view and set frame for the view
+    UILabel *pickerLabel = (UILabel *)view;
+    CGRect frame = CGRectMake(0,0,pickerView.frame.size.width - 30,50);
+    pickerLabel = [[UILabel alloc] initWithFrame:frame];
+    [pickerLabel setTextAlignment:UITextAlignmentLeft];
+    [pickerLabel setBackgroundColor:[UIColor clearColor]];
+    //[pickerLabel setFont:[UIFont boldSystemFontOfSize:16.0]];
+    [pickerLabel setNumberOfLines:0];
+    [pickerLabel setText:[[self.items objectAtIndex:row] objectForKey:@"text"]];
+    return pickerLabel;
+}
+
+
 //
 // Utilities
 //
@@ -308,7 +327,7 @@
 {
     if ( IS_IPAD )
     {
-        return CGSizeMake(480, 480);
+        return CGSizeMake(480, 320);
     }
 
     #if defined(__IPHONE_8_0)
