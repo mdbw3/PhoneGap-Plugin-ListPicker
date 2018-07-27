@@ -70,7 +70,7 @@
      [toolbar setItems:buttons animated:YES];
      
     // Initialize the picker
-    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40.0f, self.viewSize.width, 216)];
+    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 22.0f, self.viewSize.width, 216)];
     self.pickerView.showsSelectionIndicator = YES;
     self.pickerView.delegate = self;
 
@@ -81,7 +81,7 @@
     }
    
     // Initialize the View that should conain the toolbar and picker
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewSize.width, 260)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.viewSize.height - 260, self.viewSize.width, 260)];
     if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
       [view setBackgroundColor:[UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0]];
     }
@@ -308,7 +308,7 @@
 {
     if ( IS_IPAD )
     {
-        return CGSizeMake(320, 320);
+        return CGSizeMake(480, 320);
     }
 
     #if defined(__IPHONE_8_0)
