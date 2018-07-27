@@ -308,7 +308,7 @@
 {
     if ( IS_IPAD )
     {
-        return CGSizeMake(480, 320);
+        return CGSizeMake(480, 480);
     }
 
     #if defined(__IPHONE_8_0)
