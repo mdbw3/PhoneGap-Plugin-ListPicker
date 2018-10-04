@@ -1,7 +1,7 @@
 #import "ListPicker.h"
 
 #define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
-#define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+#define IS_IPAD false//UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 #define DEVICE_ORIENTATION [UIDevice currentDevice].orientation
 
 // UIInterfaceOrientationMask vs. UIInterfaceOrientation
@@ -43,7 +43,7 @@
     self.items = [options objectForKey:@"items"];
 
     // Initialize the toolbar with Cancel and Done buttons and title
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0, 0, self.viewSize.width, 44)];
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0, 0, self.viewSize.width, 53)];
     toolbar.barStyle = (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) ? UIBarStyleDefault : UIBarStyleBlackTranslucent;
     NSMutableArray *buttons =[[NSMutableArray alloc] init];
     
@@ -70,7 +70,7 @@
      [toolbar setItems:buttons animated:YES];
      
     // Initialize the picker
-    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 22.0f, self.viewSize.width, 216)];
+    self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 53.0f, self.viewSize.width, 216)];
     self.pickerView.showsSelectionIndicator = YES;
     self.pickerView.delegate = self;
 
@@ -330,7 +330,7 @@
         return CGSizeMake(480, 320);
     }
 
-    #if defined(__IPHONE_8_0)
+    #if defined(__IPHONE_8_0) 
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
         //iOS 7.1 or earlier
         if ( [self isViewPortrait] )
